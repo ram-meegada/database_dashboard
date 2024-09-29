@@ -1,0 +1,37 @@
+body {
+    display: flex; /* Use flexbox for layout */
+    margin: 0; /* Remove default margin */
+    height: 100vh; /* Full height of the viewport */
+    font-family: Arial, sans-serif; /* Set a default font */
+    background-color: red;
+}
+
+.sidebar {
+    background-color: #080808;
+    color: white;
+    padding: 20px;
+    width: 250px; /* Fixed width for sidebar */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5); /* Optional shadow */
+}
+
+.main-frame {
+    flex-grow: 1; /* Allow main frame to take remaining space */
+    padding: 20px;
+    background-color: #fdfdfd;
+    border-left: 1px solid #ccc; /* Optional border */
+    overflow-y: auto; /* Scroll if content overflows */
+}
+
+h1 {
+    text-align: left;
+}
+
+.text-box {
+    margin-right: 10px; /* Space between text boxes horizontally */
+    margin-bottom: 10px; /* Space between rows vertically */
+    padding: 5px; /* Optional padding inside the text boxes */
+}
+
+.row {
+    margin-bottom: 10px; /* Space between rows */
+}

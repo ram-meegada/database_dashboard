@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBMS Dashboard</title>
+    <style>
+        body {
+            display: flex; /* Use flexbox for layout */
+            margin: 0; /* Remove default margin */
+            height: 100vh; /* Full height of the viewport */
+            font-family: Arial, sans-serif; /* Set a default font */
+        }
+
+        .sidebar {
+            background-color: #080808;
+            color: white;
+            padding: 20px;
+            width: 250px; /* Fixed width for sidebar */
+            box-shadow: 2px 0 5px rgba(0,0,0,0.5); /* Optional shadow */
+        }
+
+        .main-frame {
+            flex-grow: 1; /* Allow main frame to take remaining space */
+            padding: 20px;
+            background-color: #fdfdfd;
+            border-left: 1px solid #ccc; /* Optional border */
+            overflow-y: auto; /* Scroll if content overflows */
+        }
+
+        h1 {
+            text-align: left;
+        }
+
+        .text-box {
+            margin-right: 10px; /* Space between text boxes horizontally */
+            margin-bottom: 10px; /* Space between rows vertically */
+            padding: 5px; /* Optional padding inside the text boxes */
+        }
+
+        .row {
+            margin-bottom: 10px; /* Space between rows */
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Sidebar with DBMS Options -->
+    <div class="sidebar">
+        <h2>DBMS Operations</h2>
+        <ul>
+            <li><button style="width: 200px; height: 25px;"><a href="{% url 'create_table' %}">Create</a></button></li><br>
+            <li><button style="width: 200px; height: 25px;">Select</button></li><br>
+            <li><button style="width: 200px; height: 25px;">Insert</button></li><br>
+            <li><button style="width: 200px; height: 25px;">Update</button></li><br>
+            <li><button style="width: 200px; height: 25px;">Delete</button></li><br>
+            <li>
+                <button onclick="toggleJoin()" style="width: 200px; height: 25px;">Join</button><br>
+                <ul class="nested" id="joinOptions">
+                    <br>
+                    <li><button style="width: 160px; height: 25px;">Inner Join</button></li><br>
+                    <li><button style="width: 160px; height: 25px;">Outer Join</button></li><br>
+                </ul>
+            </li><br>
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-frame" id="main-frame">
+        <h1>Welcome to the DBMS Dashboard</h1>
+        <p>Select an option from the menu on the left.</p>
+    </div>
+
+    <script>
+    </script> <!-- Link to external JavaScript -->
+</body>
+</html>
