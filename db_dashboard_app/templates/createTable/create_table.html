@@ -72,7 +72,7 @@
     <!-- Sidebar with DBMS Options -->
     <div class="sidebar">
         <h2>DBMS Operations</h2>
-        <ul>
+        <ul style="list-style-type: none;">
             <li><button style="width: 200px; height: 25px;">Create</button></li><br>
             <li><button style="width: 200px; height: 25px;">Select</button></li><br>
             <li><button style="width: 200px; height: 25px;">Insert</button></li><br>
@@ -80,7 +80,7 @@
             <li><button style="width: 200px; height: 25px;">Delete</button></li><br>
             <li>
                 <button onclick="toggleJoin()" style="width: 200px; height: 25px;">Join</button><br>
-                <ul class="nested" id="joinOptions">
+                <ul class="nested" id="joinOptions" style="list-style-type: none;">
                     <br>
                     <li><button style="width: 160px; height: 25px;">Inner Join</button></li><br>
                     <li><button style="width: 160px; height: 25px;">Outer Join</button></li><br>
@@ -93,25 +93,26 @@
     <div class="main-frame" id="main-frame">
         <h1>Create Table</h1>
         <p>Here you can create new entries in the database.</p>
-        <form id="tableForm">
-            <input style="width: 250px; height: 30px;" type="text" id="name" name="name" placeholder="Enter table name" required>&nbsp;
+        <form id="tableForm" action="" method="POST">{% csrf_token %}
+            <input style="width: 250px; height: 30px;" type="text" id="name" name="table_name" placeholder="Enter table name" required>&nbsp;
             <button class="button-ele" onclick="addColumn(event)">Add column</button>
-        </form>
-        <div style="display: flex; flex-direction: column">
-            <h3>Columns</h3>
-            <table style="width: 600px;" id="columns">
-                <tr>
-                    <th class="table-heading" style="width: 30%;">Name</th>
-                    <th class="table-heading" style="width: 35%;">Data type</th>
-                    <th class="table-heading" style="width: 35%;">Constraints</th>
-                </tr>
-            </table>
-            <div style="display: flex; justify-content: flex-end; position: relative; right: 435px; margin-top: 10px;">
-                <button class="button-ele">Create</button>
+            <div style="display: flex; flex-direction: column">
+                <h3>Columns</h3>
+                <table style="width: 600px;" id="columns">
+                    <tr>
+                        <th class="table-heading" style="width: 30%;">Name</th>
+                        <th class="table-heading" style="width: 35%;">Data type</th>
+                        <th class="table-heading" style="width: 35%;">Constraints</th>
+                    </tr>
+                </table>
+                <div style="display: flex; justify-content: flex-end; position: relative; right: 435px; margin-top: 10px;">
+                    <button class="button-ele">Create</button>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
     <script>
+        let columnCount = 0
         function addColumn(event){
             event.preventDefault();
             const columns = document.getElementById("columns")
@@ -125,12 +126,15 @@
                     column_data.style.width = "30%"
                     let input_ele = document.createElement("input")
                     input_ele.className = "input-data"
+                    input_ele.name = "column_name"
                     column_data.appendChild(input_ele)
                 }
                 else if(i == 1) {
                     column_data.style.width = "35%"
                     let select = document.createElement("select")
                     select.className = "select-datatype"
+                    select.name = `select-datatype`
+                    columnCount += 1
                     for (j = 0; j < dataTypes.length; j++) {
                         option = document.createElement("option")
                         option.value = dataTypes[j]
@@ -143,6 +147,7 @@
                     column_data.style.width = "35%"
                     let select_constraint = document.createElement("select")
                     select_constraint.className = "select-constraints"
+                    select_constraint.name = "select-constraints"
                     for (k = 0; k < constraints.length; k++) {
                         option_constraints = document.createElement("option")
                         option_constraints.value = constraints[k]
