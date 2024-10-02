@@ -118,8 +118,8 @@
             const columns = document.getElementById("columns")
             const column_row = document.createElement("tr")
             for (let i = 0; i < 3; i++){
-                const dataTypes = ['INT', 'VARCHAR', 'BIG INT', 'DATE', 'TEXT', 'DATETIME'];
-                const constraints = ['PRIMARY', 'UNIQUE', 'NOT NULL', 'NULL'];
+                const dataTypes = ['INT', 'VARCHAR(100)', 'BIG INT', 'DATE', 'TEXT', 'DATETIME'];
+                const constraints = ['UNIQUE', 'NOT NULL', 'NULL'];
                 let column_data = document.createElement("td")
                 column_data.className = "table-data"
                 if (i == 0) {
